@@ -1,0 +1,23 @@
+external-dns:
+  extraVolumes:
+    - name: azure-config-file
+      secret:
+        secretName: azure-config-file
+
+  extraVolumeMounts:
+    - name: azure-config-file
+      mountPath: /etc/kubernetes
+      readOnly: true
+
+  provider: azure
+
+secrets:
+  azure_json: | 
+    {
+      "tenantId": "xxx",
+      "subscriptionId": "xxx",
+      "resourceGroup": "xxx",
+      "aadClientId": "xxx",
+      "aadClientSecret": "xxx"
+    }
+
