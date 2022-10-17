@@ -1,4 +1,20 @@
 external-dns:
+
+  logLevel: info
+  logFormat: text
+
+  interval: 1m
+  triggerLoopOnEvent: false
+
+  sources:
+    - service
+    - ingress
+
+  policy: upsert-only
+
+  registry: txt
+
+  domainFilters: []
   extraVolumes:
     - name: azure-config-file
       secret:
